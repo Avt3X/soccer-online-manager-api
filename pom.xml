@@ -18,7 +18,10 @@
         <license/>
     </licenses>
     <developers>
-        <developer/>
+        <developer>
+            <email>avtobolashvili1297@gmail.com</email>
+            <name>Avt3X</name>
+        </developer>
     </developers>
     <scm>
         <connection/>
