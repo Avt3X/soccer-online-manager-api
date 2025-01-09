@@ -8,6 +8,7 @@ class SoccerOnlineManagerApiApplicationTests {
 
     @Test
     void contextLoads() {
+
     }
 
 }
