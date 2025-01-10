@@ -34,12 +34,13 @@ public class Team {
     @Column(nullable = false, length = 100)
     private String country;
 
+    @Setter
     @Column(name = "budget", nullable = false, precision = 15, scale = 2)
     private BigDecimal budget;
 
-    @Column(name = "team_value", precision = 15, scale = 2)
+    @Column(name = "team_value", insertable = false, updatable = false, precision = 15, scale = 2)
     private BigDecimal teamValue;
 
-    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "team", orphanRemoval = true)
     private List<Player> players;
 }

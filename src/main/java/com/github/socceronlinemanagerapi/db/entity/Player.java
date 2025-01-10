@@ -10,6 +10,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
@@ -35,10 +36,16 @@ public class Player {
     @Column(name = "position", nullable = false)
     private String position;
 
+    @Setter
+    @Column(name = "status")
+    private String status;
+
+    @Setter
     @Column(name = "market_value", nullable = false, precision = 15, scale = 2)
     private BigDecimal marketValue;
 
     @ManyToOne
+    @Setter
     @JoinColumn(name = "team_id")
     private Team team;
 }

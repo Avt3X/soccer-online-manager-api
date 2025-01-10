@@ -24,7 +24,8 @@ CREATE TABLE soccer_manager.players
     first_name   VARCHAR(100)   NOT NULL,
     last_name    VARCHAR(100)   NOT NULL,
     age          INT            NOT NULL,
-    position    VARCHAR(20)    NOT NULL,
+    position     VARCHAR(20)    NOT NULL,
+    status       VARCHAR(20),
     market_value NUMERIC(15, 2) NOT NULL,
     team_id      INT,
     FOREIGN KEY (team_id) REFERENCES soccer_manager.teams (id) ON DELETE SET NULL
@@ -34,11 +35,40 @@ CREATE OR REPLACE FUNCTION update_team_value()
     RETURNS TRIGGER AS
 $$
 BEGIN
-    UPDATE soccer_manager.teams
-    SET team_value = (SELECT COALESCE(SUM(market_value), 0)
-                      FROM soccer_manager.players
-                      WHERE team_id = NEW.team_id)
-    WHERE id = NEW.team_id;
+    IF TG_OP = 'UPDATE' THEN
+        -- Update the old team's value
+        UPDATE soccer_manager.teams
+        SET team_value = (SELECT COALESCE(SUM(market_value), 0)
+                          FROM soccer_manager.players
+                          WHERE team_id = OLD.team_id)
+        WHERE id = OLD.team_id;
+
+        -- Update the new team's value
+        UPDATE soccer_manager.teams
+        SET team_value = (SELECT COALESCE(SUM(market_value), 0)
+                          FROM soccer_manager.players
+                          WHERE team_id = NEW.team_id)
+        WHERE id = NEW.team_id;
+    END IF;
+
+    -- Handle INSERT
+    IF TG_OP = 'INSERT' THEN
+        UPDATE soccer_manager.teams
+        SET team_value = (SELECT COALESCE(SUM(market_value), 0)
+                          FROM soccer_manager.players
+                          WHERE team_id = NEW.team_id)
+        WHERE id = NEW.team_id;
+    END IF;
+
+    -- Handle DELETE
+    IF TG_OP = 'DELETE' THEN
+        UPDATE soccer_manager.teams
+        SET team_value = (SELECT COALESCE(SUM(market_value), 0)
+                          FROM soccer_manager.players
+                          WHERE team_id = OLD.team_id)
+        WHERE id = OLD.team_id;
+    END IF;
+
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
@@ -60,3 +90,5 @@ DROP TABLE IF EXISTS soccer_manager.users CASCADE;
 
 -- Drop the schema
 DROP SCHEMA IF EXISTS soccer_manager CASCADE;
+
+DROP TRIGGER IF EXISTS trg_update_team_value ON soccer_manager.players;
