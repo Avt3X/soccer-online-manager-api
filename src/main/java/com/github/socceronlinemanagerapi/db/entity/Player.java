@@ -21,6 +21,7 @@ import java.math.BigDecimal;
 public class Player {
 
     @Id
+    @Setter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
