@@ -38,6 +38,10 @@ The database schema and initial data are provided in the `resources` directory:
    spring.datasource.password=your_password
 
 
+### Notes:
+
+- Encrypted password values are `password1`, `password2`, `password3`
+
 ## How to Run the Project
 
 1. Run `mvn clean install`
