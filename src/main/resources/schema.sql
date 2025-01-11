@@ -82,13 +82,10 @@ EXECUTE FUNCTION update_team_value();
 
 DROP TABLE IF EXISTS soccer_manager.players CASCADE;
 
--- Drop the Teams table
 DROP TABLE IF EXISTS soccer_manager.teams CASCADE;
 
--- Drop the Users table
 DROP TABLE IF EXISTS soccer_manager.users CASCADE;
 
--- Drop the schema
 DROP SCHEMA IF EXISTS soccer_manager CASCADE;
 
 DROP TRIGGER IF EXISTS trg_update_team_value ON soccer_manager.players;
