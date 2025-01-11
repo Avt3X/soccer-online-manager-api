@@ -40,7 +40,7 @@ public class PlayerServiceImpl implements PlayerService {
 
         player.setStatus(PlayerStatus.ON_TRANSFER_LIST.name());
         player.setMarketValue(request.getAskingPrice());
-        return playerMapper.mapToPlayerDTO(playerRepository.save(player));
+        return playerMapper.mapToPlayerDTO(player);
     }
 
     @Override
@@ -67,6 +67,9 @@ public class PlayerServiceImpl implements PlayerService {
                 .map(Team::getBudget)
                 .filter(budget -> budget.compareTo(player.getMarketValue()) >= 0)
                 .orElseThrow(() -> new IllegalStateException("Team budget is not enough"));
+
+        Optional.of(userTeam).map(Team::getId).filter(id -> id != playerTeam.getId())
+                .orElseThrow(() -> new IllegalStateException("You can't purchase your player"));
 
         player.setStatus(null);
         player.setTeam(userTeam);
