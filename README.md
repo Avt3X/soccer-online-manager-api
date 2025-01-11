@@ -8,7 +8,6 @@ A RESTful API for managing fantasy soccer teams. Users can manage their teams, b
 - **Financial Management**: Automatic updates to team budgets and values during transactions.
 - **Authentication**: HTTP Basic Authentication using predefined users for easy testing.
 
----
 
 ## Tech Stack
 - **Java 21**
@@ -16,14 +15,12 @@ A RESTful API for managing fantasy soccer teams. Users can manage their teams, b
 - **PostgreSQL**
 - **Hibernate**
 
----
 
 ## Prerequisites
 1. **Java Development Kit (JDK) 21**
 2. **PostgreSQL** installed and running.
 3. **Maven** for dependency management and building the project.
 
----
 
 ## Database Setup
 
@@ -40,14 +37,12 @@ The database schema and initial data are provided in the `resources` directory:
    spring.datasource.username=your_username
    spring.datasource.password=your_password
 
----
 
 ## How to Run the Project
 
 1. Run `mvn clean install`
 2. Run `mvn spring-boot:run`
 
----
 
 ## API Usage
 
