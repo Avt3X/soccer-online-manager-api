@@ -1,6 +1,7 @@
 package com.github.socceronlinemanagerapi.servicies;
 
 import com.github.socceronlinemanagerapi.api.request.ListPlayerOnTransferRequest;
+import com.github.socceronlinemanagerapi.api.request.UpdatePlayerMarketValueRequest;
 import com.github.socceronlinemanagerapi.db.entity.Player;
 import com.github.socceronlinemanagerapi.db.entity.Team;
 import com.github.socceronlinemanagerapi.db.repository.PlayerRepository;
@@ -76,6 +77,20 @@ public class PlayerServiceImpl implements PlayerService {
 
         userTeam.setBudget(userTeam.getBudget().subtract(player.getMarketValue()));
         playerTeam.setBudget(playerTeam.getBudget().add(player.getMarketValue()));
+
+        return playerMapper.mapToPlayerDTO(player);
+    }
+
+    @Override
+    @Transactional
+    public PlayerDTO updateMarketValue(String userEmail, UpdatePlayerMarketValueRequest request) {
+        var player = this.findPlayer(request.getPlayerId());
+        var userTeam = teamRepository.findByUserEmail(userEmail);
+
+        Optional.of(userTeam).map(Team::getId).filter(id -> id == player.getTeam().getId())
+                .orElseThrow(() -> new IllegalStateException("Player is not in your list"));
+
+        player.setMarketValue(request.getMarketValue());
 
         return playerMapper.mapToPlayerDTO(player);
     }
