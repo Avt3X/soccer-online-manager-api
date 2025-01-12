@@ -1,5 +1,5 @@
 
-INSERT INTO soccer_manager.teams (name, country, initial_budget)
+INSERT INTO soccer_manager.teams (name, country, budget)
 VALUES ('Thunderbolts', 'Germany', 3000000),
        ('Crimson Falcons', 'Brazil', 3000000),
        ('Golden Eagles', 'USA', 3000000);

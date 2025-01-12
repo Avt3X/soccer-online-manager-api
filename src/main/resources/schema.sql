@@ -11,11 +11,11 @@ CREATE TABLE soccer_manager.users
 
 CREATE TABLE soccer_manager.teams
 (
-    id             SERIAL PRIMARY KEY,
-    name           VARCHAR(100)   NOT NULL UNIQUE,
-    country        VARCHAR(100)   NOT NULL,
-    initial_budget NUMERIC(15, 2) NOT NULL,
-    team_value     NUMERIC(15, 2)
+    id         SERIAL PRIMARY KEY,
+    name       VARCHAR(100)   NOT NULL UNIQUE,
+    country    VARCHAR(100)   NOT NULL,
+    budget     NUMERIC(15, 2) NOT NULL,
+    team_value NUMERIC(15, 2)
 );
 
 CREATE TABLE soccer_manager.players
@@ -86,6 +86,7 @@ DROP TABLE IF EXISTS soccer_manager.teams CASCADE;
 
 DROP TABLE IF EXISTS soccer_manager.users CASCADE;
 
+DROP TRIGGER IF EXISTS trg_update_team_value ON soccer_manager.players;
+
 DROP SCHEMA IF EXISTS soccer_manager CASCADE;
 
-DROP TRIGGER IF EXISTS trg_update_team_value ON soccer_manager.players;

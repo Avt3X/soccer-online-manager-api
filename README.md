@@ -56,4 +56,5 @@ The database schema and initial data are provided in the `resources` directory:
 
 ### Notes:
 
+- [View Postman collection](./soccer-online-manager-api.postman_collection.json)
 - Authorization header: `Authorization: Basic base64encode(username:password)`

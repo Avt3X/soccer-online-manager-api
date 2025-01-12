@@ -1,0 +1,248 @@
+{
+	"info": {
+		"_postman_id": "ca80ffff-7578-4b46-bc0d-1c6a42e61f6c",
+		"name": "soccer-online-manager-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3571810"
+	},
+	"item": [
+		{
+			"name": "View team",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password3",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user3@example.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/team",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"team"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update player market value",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password2",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user2@example.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"marketValue\": \"691752\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/player/25/marketvalue",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"player",
+						"25",
+						"marketvalue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List player on transfer",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password3",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user3@example.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"askingPrice\": \"600000\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/player/41/listontransfer",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"player",
+						"41",
+						"listontransfer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View listed players",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password3",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user3@example.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/player/listedontransfer",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"player",
+						"listedontransfer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Purchase player",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user1@example.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/player/41/purchase",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"player",
+						"41",
+						"purchase"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update team details",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user1@example.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Kala\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/team",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"team"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
